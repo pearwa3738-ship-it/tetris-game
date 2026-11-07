@@ -1687,24 +1687,64 @@ h3 {
     display: none;
 }
 
+
+/* ===== ปรับหน้าจอสำหรับโทรศัพท์ ===== */
 @media screen and (max-width: 768px) {
-    .mobile-controls {
+
+    html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .game-container {
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 15px;
+        width: 100%;
+        margin: 15px auto 30px;
+        padding: 0 8px;
+        box-sizing: border-box;
+    }
+
+    .game-board {
+        position: relative;
+        width: min(78vw, 300px);
+        height: auto;
+        box-sizing: border-box;
+        flex-shrink: 0;
+    }
+
+    .game-board canvas#game {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .mobile-controls {
+        display: flex !important;
         justify-content: center;
         align-items: center;
-        gap: 12px;
-        margin: 15px auto;
+        flex-wrap: nowrap;
+        gap: 10px;
         width: 100%;
+        margin: 15px auto;
+        position: relative;
+        z-index: 30;
     }
 
     .mobile-controls button {
-        width: 58px;
-        height: 58px;
+        width: 52px;
+        height: 52px;
+        padding: 0;
         border: 2px solid #b99aff;
         border-radius: 15px;
         background: #392858;
         color: white;
-        font-size: 26px;
+        font-size: 24px;
         font-weight: bold;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         touch-action: none;
@@ -1716,35 +1756,11 @@ h3 {
         background: #9066d8;
         transform: scale(0.93);
     }
-}
-
-
-/* ===== ปรับหน้าจอสำหรับโทรศัพท์ ===== */
-@media screen and (max-width: 768px) {
-
-    .game-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 15px;
-        margin-top: 15px;
-        padding: 0 10px;
-    }
-
-}
-
-/* ===== ปรับขนาดเกมบนโทรศัพท์ ===== */
-@media screen and (max-width: 768px) {
-
-    #game {
-        width: min(75vw, 300px);
-        height: auto;
-    }
 
     .game-info {
-        width: min(85vw, 260px);
+        width: min(85vw, 300px);
         box-sizing: border-box;
+        margin: 0 auto;
         padding: 12px;
         text-align: center;
     }
@@ -1757,55 +1773,5 @@ h3 {
     .hold-block {
         margin-top: 10px;
     }
-
-    .mobile-controls {
-        position: relative;
-        z-index: 30;
-    }
-
 }
 
-
-
-/* ===== จัดหน้าจอมือถือให้พอดี ===== */
-@media screen and (max-width: 768px) {
-
-    html, body {
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-
-    .game-container {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        width: 100% !important;
-        gap: 15px !important;
-        padding: 0 8px;
-        box-sizing: border-box;
-    }
-
-    .game-board {
-        width: min(78vw, 300px) !important;
-        height: auto !important;
-        box-sizing: border-box;
-        flex-shrink: 0;
-    }
-
-    .game-board canvas {
-        width: 100% !important;
-        height: auto !important;
-    }
-
-    .game-info {
-        width: min(85vw, 300px) !important;
-        box-sizing: border-box;
-        margin: 0 auto;
-    }
-
-    .mobile-controls {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: nowrap;
-    }
-}
