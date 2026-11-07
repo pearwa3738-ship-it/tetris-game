@@ -1881,3 +1881,43 @@ h3 {
         box-sizing: border-box !important;
     }
 }
+/* ===== MOBILE GAME LAYOUT ===== */
+@media screen and (max-width: 768px) {
+
+    .game-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: 100% !important;
+        gap: 15px !important;
+    }
+
+    .game-board {
+        order: 1 !important;
+        width: 300px !important;
+        height: 600px !important;
+        flex: none !important;
+    }
+
+    .mobile-controls {
+        order: 2 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    .game-info {
+        order: 3 !important;
+        width: 300px !important;
+        flex: none !important;
+        margin: 0 auto !important;
+    }
+
+    #game-screen {
+        width: 100% !important;
+        overflow-x: hidden !important;
+    }
+}
