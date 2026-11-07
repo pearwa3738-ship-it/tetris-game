@@ -336,7 +336,8 @@ button:active {
 
 /* ===== RESPONSIVE MOBILE ===== */
 
-@media (max-width: 600px) {
+/* ===== ปรับหน้าจอมือถือขนาดเล็ก ===== */
+@media screen and (max-width: 600px) {
 
     h1 {
         font-size: 25px;
@@ -348,15 +349,24 @@ button:active {
         align-items: center;
         gap: 15px;
         margin-top: 15px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     .game-board {
-        width: 300px;
-        height: 600px;
+        width: min(78vw, 300px);
+        height: auto;
+        box-sizing: border-box;
+    }
+
+    .game-board canvas#game {
+        width: 100%;
+        height: auto;
     }
 
     .game-info {
-        width: 260px;
+        width: min(85vw, 260px);
         box-sizing: border-box;
     }
 
