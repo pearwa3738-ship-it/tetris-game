@@ -200,6 +200,14 @@ function drawNextBlock() {
     // ขนาดของแต่ละช่อง
     const blockSize = 25;
 
+    // หาความกว้างและความสูงของบล็อก
+    const width = nextBlock.shape[0].length * blockSize;
+    const height = nextBlock.shape.length * blockSize;
+
+    // จัดบล็อกให้อยู่ตรงกลาง
+    const offsetX = (nextCanvas.width - width) / 2;
+    const offsetY = (nextCanvas.height - height) / 2;
+
     // วาดบล็อกทีละช่อง
     for (let y = 0; y < nextBlock.shape.length; y++) {
         for (let x = 0; x < nextBlock.shape[y].length; x++) {
