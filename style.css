@@ -1828,3 +1828,56 @@ h3 {
         box-sizing: border-box;
     }
 }
+/* ===== แก้หน้าจอมือถือโดยเฉพาะ ===== */
+@media screen and (max-width: 768px) {
+
+    html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    .game-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 15px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 15px auto 30px !important;
+        padding: 0 8px !important;
+        box-sizing: border-box !important;
+    }
+
+    .game-board {
+        width: min(78vw, 300px) !important;
+        max-width: 100% !important;
+        height: auto !important;
+        flex: 0 0 auto !important;
+        box-sizing: border-box !important;
+    }
+
+    .game-board canvas#game {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .mobile-controls {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        flex-wrap: nowrap !important;
+        gap: 10px !important;
+    }
+
+    .game-info {
+        width: min(85vw, 300px) !important;
+        max-width: 100% !important;
+        flex: 0 0 auto !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+}
