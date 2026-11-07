@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tetris Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- หุ่นยนต์ตกแต่งเกม -->
+
+
+    <!-- หน้าเริ่มต้นเกม -->
+    <div id="start-screen">
+
+        <div class="game-title">
+    <img src="robot.png" class="title-robot" alt="Robot">
+    <h1>MY TETRIS GAME</h1>
+</div>
+        <p>เกมส์เรียงบล็อก</p>
+
+        <div class="player-section">
+
+            <h2>PLAYER NAME</h2>
+
+            <input
+                type="text"
+                id="player-name"
+                placeholder="กรอกชื่อผู้เล่น"
+                maxlength="15"
+            >
+
+        </div>
+
+        <button id="start">START GAME</button>
+
+
+        <!-- ตารางอันดับ -->
+        <div class="leaderboard">
+
+            <h2>🏆 LEADERBOARD TOP 20</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>อันดับ</th>
+                        <th>ชื่อผู้เล่น</th>
+                        <th>คะแนน</th>
+                    </tr>
+                </thead>
+
+                <tbody id="leaderboard-list">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- หน้าเล่นเกม -->
+    <div id="game-screen" style="display: none;">
+
+        <div class="game-title">
+    <img src="robot.png" class="title-robot" alt="Robot">
+    <h1>MY TETRIS GAME</h1>
+</div>
+        <p>เกมส์เรียงบล็อก</p>
+
+
+        <div class="game-container">
+
+
+            <!-- กระดานเกม -->
+            <div class="game-board">
+
+                <canvas
+                    id="game"
+                    width="300"
+                    height="600">
+                </canvas>
+
+
+                <!-- GAME OVER -->
+                <div id="game-over" class="game-over">
+
+                    <h2>GAME OVER</h2>
+
+                    <p class="final-title">
+                        คะแนนสุดท้าย
+                    </p>
+
+                    <p id="final-score" class="final-score">
+                        0
+                    </p>
+
+
+                    <!-- ปุ่มควบคุม -->
+                    <div class="game-over-buttons">
+
+                        <button id="play-again">
+                            ▶ เล่นอีกครั้ง
+                        </button>
+
+                        <button id="back-to-menu">
+                            ⌂ กลับหน้าหลัก
+                        </button>
+
+                    </div>
+
+
+                    <!-- แบบประเมิน -->
+                    <div id="evaluation-form" class="evaluation-form">
+
+                        <h3>แบบประเมินความพึงพอใจ</h3>
+
+                        <p>
+                            คุณรู้สึกอย่างไรกับเกมนี้?
+                        </p>
+
+
+                        <!-- คะแนนความพึงพอใจ -->
+                        <div class="rating">
+
+                            <input
+                                type="radio"
+                                name="rating"
+                                id="star1"
+                                value="1"
+                            >
+                            <label for="star1">★</label>
+
+
+                            <input
+                                type="radio"
+                                name="rating"
+                                id="star2"
+                                value="2"
+                            >
+                            <label for="star2">★</label>
+
+
+                            <input
+                                type="radio"
+                                name="rating"
+                                id="star3"
+                                value="3"
+                            >
+                            <label for="star3">★</label>
+
+
+                            <input
+                                type="radio"
+                                name="rating"
+                                id="star4"
+                                value="4"
+                            >
+                            <label for="star4">★</label>
+
+
+                            <input
+                                type="radio"
+                                name="rating"
+                                id="star5"
+                                value="5"
+                            >
+                            <label for="star5">★</label>
+
+                        </div>
+
+                        <p id="rating-text">
+                            กรุณาเลือกคะแนน
+                        </p>
+
+
+                        <!-- สิ่งที่ชอบ -->
+                        <label for="liked">
+                            สิ่งที่ชอบในเกม
+                        </label>
+
+                        <textarea
+                            id="liked"
+                            placeholder="บอกสิ่งที่ชอบในเกม..."
+                        ></textarea>
+
+
+                        <!-- สิ่งที่อยากให้ปรับปรุง -->
+                        <label for="disliked">
+                            สิ่งที่อยากให้ปรับปรุง
+                        </label>
+
+                        <textarea
+                            id="disliked"
+                            placeholder="บอกสิ่งที่อยากให้ปรับปรุง..."
+                        ></textarea>
+
+
+                        <!-- ปุ่มส่งแบบประเมิน -->
+                        <button id="submit-evaluation">
+                            ➤ ส่งแบบประเมิน
+                        </button>
+
+                    </div>
+                    <!-- จบแบบประเมิน -->
+
+                </div>
+                <!-- จบ GAME OVER -->
+
+            </div>
+            <!-- จบกระดานเกม -->
+
+
+            <!-- ข้อมูลเกม -->
+            <div class="game-info">
+
+                <div class="next-block">
+
+                    <h3>บล็อกถัดไป</h3>
+
+                    <canvas
+                        id="next"
+                        width="120"
+                        height="120">
+                    </canvas>
+
+                </div>
+
+
+                <h2>คะแนน</h2>
+                <p id="score">0</p>
+
+
+                <h2>HIGH SCORE</h2>
+                <p id="high-score">0</p>
+
+
+                <h2>ระดับ</h2>
+                <p id="level">1</p>
+
+
+                <button id="restart">
+                    เริ่มใหม่
+                </button>
+
+                <button id="pause">
+                    พักเกม
+                </button>
+
+            </div>
+            <!-- จบข้อมูลเกม -->
+
+        </div>
+
+    </div>
+
+
+    <!-- เชื่อมต่อ JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

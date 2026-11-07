@@ -1,0 +1,1683 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Press+Start+2P&display=swap');
+
+/* ===== GAME FONT ===== */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+/* ตัวอักษรทั่วไป */
+body {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+}
+
+/* หัวข้อเกม */
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #e9d5ff;
+    text-shadow:
+        0 0 5px #c084fc,
+        0 0 15px #a855f7,
+        0 0 30px #7e22ce;
+}
+
+/* หัวข้อย่อย */
+h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    color: #d8b4fe;
+    letter-spacing: 1px;
+}
+
+/* คะแนนและตัวเลข */
+.game-info p {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 23px;
+    color: #67e8f9;
+    text-shadow: 0 0 12px #06b6d4;
+}
+
+/* ปุ่มทั้งหมด */
+button {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* ช่องกรอกชื่อ */
+#player-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* ตารางอันดับ */
+.leaderboard th {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+}
+
+.leaderboard td {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* ===== พื้นหลังหลักของเกม ===== */
+
+body {
+    background: #171323 url("background.png") no-repeat center center fixed !important;
+    background-size: cover !important;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* ===== หัวข้อเกม ===== */
+
+h1 {
+    color: #d8b4fe;
+    font-size: 35px;
+    margin-top: 25px;
+    text-shadow:
+        0 0 10px #a855f7,
+        0 0 25px #9333ea,
+        0 0 40px #7e22ce;
+    letter-spacing: 3px;
+}
+
+/* ===== พื้นที่เกม ===== */
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.game-board {
+    position: relative;
+    width: 300px;
+    height: 600px;
+    background: #100d20;
+    border: 2px solid #a855f7;
+    border-radius: 8px;
+    box-shadow:
+        0 0 10px #9333ea,
+        0 0 25px rgba(168, 85, 247, 0.5);
+    animation: neonGlow 3s infinite;
+}
+
+canvas {
+    display: block;
+    background: #100d20;
+}
+
+/* ===== ข้อมูลคะแนน ===== */
+
+.game-info {
+    width: 130px;
+    background: linear-gradient(145deg, #292044, #171329);
+    border: 1px solid #9333ea;
+    border-radius: 15px;
+    padding: 18px;
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.25);
+    transition: 0.3s;
+}
+
+.game-info:hover {
+    box-shadow: 0 0 22px rgba(168, 85, 247, 0.6);
+}
+
+.game-info h2 {
+    color: #d8b4fe;
+    font-size: 20px;
+    text-shadow: 0 0 8px #9333ea;
+}
+
+.game-info p {
+    color: #67e8f9;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 0 0 10px #06b6d4;
+}
+
+/* ===== ปุ่มเกม ===== */
+
+button {
+    position: relative;
+    overflow: hidden;
+    width: 120px;
+    padding: 12px;
+    margin-top: 12px;
+    border: 1px solid #c084fc;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #9333ea, #4f46e5);
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(147, 51, 234, 0.4);
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #c084fc, #6366f1);
+    transform: scale(1.05);
+    box-shadow:
+        0 0 10px #a855f7,
+        0 0 20px #9333ea,
+        0 0 35px rgba(147, 51, 234, 0.6);
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 8px #c084fc;
+}
+
+/* ===== NEXT BLOCK และ HOLD ===== */
+
+.next-block,
+.hold-block {
+    background: rgba(10, 8, 25, 0.8);
+    border: 1px solid #7c3aed;
+    border-radius: 12px;
+    padding: 10px;
+    margin-top: 15px;
+    box-shadow: 0 0 12px rgba(124, 58, 237, 0.3);
+}
+
+.next-block h3,
+.hold-block h3 {
+    color: #c4b5fd;
+    text-shadow: 0 0 8px #8b5cf6;
+}
+
+/* ===== GAME OVER ===== */
+
+.game-over {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(23, 19, 35, 0.95);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.game-over.show {
+    display: flex;
+}
+
+.game-over h2 {
+    color: #f87171;
+    font-size: 30px;
+}
+
+.game-over p {
+    color: white;
+    font-size: 20px;
+    margin: 8px;
+}
+
+.game-over #final-score {
+    color: #c084fc;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.game-over button {
+    width: 150px;
+    margin-top: 20px;
+}
+
+/* ===== ANIMATION NEON ===== */
+
+@keyframes neonGlow {
+    0% {
+        box-shadow:
+            0 0 8px #9333ea,
+            0 0 15px rgba(147, 51, 234, 0.3);
+    }
+
+    50% {
+        box-shadow:
+            0 0 15px #a855f7,
+            0 0 30px rgba(168, 85, 247, 0.7);
+    }
+
+    100% {
+        box-shadow:
+            0 0 8px #9333ea,
+            0 0 15px rgba(147, 51, 234, 0.3);
+    }
+}
+
+/* ===== LEADERBOARD ===== */
+
+.leaderboard {
+    width: 90%;
+    max-width: 420px;
+    margin: 30px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background: linear-gradient(145deg, #211936, #120f20);
+    border: 1px solid #9333ea;
+    border-radius: 18px;
+    box-shadow:
+        0 0 12px rgba(147, 51, 234, 0.4),
+        0 0 25px rgba(147, 51, 234, 0.15);
+}
+
+.leaderboard h2 {
+    color: #d8b4fe;
+    text-align: center;
+    margin: 0 0 18px;
+    text-shadow: 0 0 12px #9333ea;
+}
+
+.leaderboard table {
+    width: 100%;
+    margin: auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.leaderboard th {
+    background: #35234f;
+    color: #c4b5fd;
+    padding: 12px 5px;
+    font-size: 14px;
+    border-bottom: 2px solid #9333ea;
+}
+
+.leaderboard td {
+    color: white;
+    text-align: center;
+    padding: 11px 5px;
+    font-size: 14px;
+    border-bottom: 1px solid #45365f;
+}
+
+.leaderboard th:nth-child(1),
+.leaderboard td:nth-child(1) {
+    width: 18%;
+}
+
+.leaderboard th:nth-child(2),
+.leaderboard td:nth-child(2) {
+    width: 52%;
+}
+
+.leaderboard th:nth-child(3),
+.leaderboard td:nth-child(3) {
+    width: 30%;
+}
+
+.leaderboard td:nth-child(3) {
+    color: #67e8f9;
+    font-weight: bold;
+}
+
+.leaderboard tbody tr:hover {
+    background: rgba(147, 51, 234, 0.2);
+}
+
+/* ===== RESPONSIVE MOBILE ===== */
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 25px;
+        margin-top: 15px;
+    }
+
+    .game-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .game-board {
+        width: 300px;
+        height: 600px;
+    }
+
+    .game-info {
+        width: 260px;
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 120px;
+    }
+}
+
+/* ===== พื้นหลังหลักของเกม ===== */
+
+body {
+    background-color: #171323;
+
+    background-image:
+        linear-gradient(
+            rgba(9, 8, 20, 0.35),
+            rgba(9, 8, 20, 0.55)
+        ),
+        url("./background.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* ===== หัวข้อเกม ===== */
+
+h1 {
+    color: #d8b4fe;
+    font-size: 35px;
+    margin-top: 25px;
+    text-shadow:
+        0 0 10px #a855f7,
+        0 0 25px #9333ea,
+        0 0 40px #7e22ce;
+    letter-spacing: 3px;
+}
+
+/* ===== พื้นที่เกม ===== */
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.game-board {
+    position: relative;
+    width: 300px;
+    height: 600px;
+    background: #100d20;
+    border: 2px solid #a855f7;
+    border-radius: 8px;
+    box-shadow:
+        0 0 10px #9333ea,
+        0 0 25px rgba(168, 85, 247, 0.5);
+    animation: neonGlow 3s infinite;
+}
+
+canvas {
+    display: block;
+    background: #100d20;
+}
+
+/* ===== ข้อมูลคะแนน ===== */
+
+.game-info {
+    width: 130px;
+    background: linear-gradient(145deg, #292044, #171329);
+    border: 1px solid #9333ea;
+    border-radius: 15px;
+    padding: 18px;
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.25);
+    transition: 0.3s;
+}
+
+.game-info:hover {
+    box-shadow: 0 0 22px rgba(168, 85, 247, 0.6);
+}
+
+.game-info h2 {
+    color: #d8b4fe;
+    font-size: 20px;
+    text-shadow: 0 0 8px #9333ea;
+}
+
+.game-info p {
+    color: #67e8f9;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 0 0 10px #06b6d4;
+}
+
+/* ===== ปุ่มเกม ===== */
+
+button {
+    position: relative;
+    overflow: hidden;
+    width: 120px;
+    padding: 12px;
+    margin-top: 12px;
+    border: 1px solid #c084fc;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #9333ea, #4f46e5);
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(147, 51, 234, 0.4);
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #c084fc, #6366f1);
+    transform: scale(1.05);
+    box-shadow:
+        0 0 10px #a855f7,
+        0 0 20px #9333ea,
+        0 0 35px rgba(147, 51, 234, 0.6);
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 8px #c084fc;
+}
+
+/* ===== NEXT BLOCK และ HOLD ===== */
+
+.next-block,
+.hold-block {
+    background: rgba(10, 8, 25, 0.8);
+    border: 1px solid #7c3aed;
+    border-radius: 12px;
+    padding: 10px;
+    margin-top: 15px;
+    box-shadow: 0 0 12px rgba(124, 58, 237, 0.3);
+}
+
+.next-block h3,
+.hold-block h3 {
+    color: #c4b5fd;
+    text-shadow: 0 0 8px #8b5cf6;
+}
+
+/* ===== GAME OVER ===== */
+
+.game-over {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(23, 19, 35, 0.95);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.game-over.show {
+    display: flex;
+}
+
+.game-over h2 {
+    color: #f87171;
+    font-size: 30px;
+}
+
+.game-over p {
+    color: white;
+    font-size: 20px;
+    margin: 8px;
+}
+
+.game-over #final-score {
+    color: #c084fc;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.game-over button {
+    width: 150px;
+    margin-top: 20px;
+}
+
+/* ===== ANIMATION NEON ===== */
+
+@keyframes neonGlow {
+    0% {
+        box-shadow:
+            0 0 8px #9333ea,
+            0 0 15px rgba(147, 51, 234, 0.3);
+    }
+
+    50% {
+        box-shadow:
+            0 0 15px #a855f7,
+            0 0 30px rgba(168, 85, 247, 0.7);
+    }
+
+    100% {
+        box-shadow:
+            0 0 8px #9333ea,
+            0 0 15px rgba(147, 51, 234, 0.3);
+    }
+}
+
+/* ===== LEADERBOARD ===== */
+
+.leaderboard {
+    width: 90%;
+    max-width: 420px;
+    margin: 30px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background: linear-gradient(145deg, #211936, #120f20);
+    border: 1px solid #9333ea;
+    border-radius: 18px;
+    box-shadow:
+        0 0 12px rgba(147, 51, 234, 0.4),
+        0 0 25px rgba(147, 51, 234, 0.15);
+}
+
+.leaderboard h2 {
+    color: #d8b4fe;
+    text-align: center;
+    margin: 0 0 18px;
+    text-shadow: 0 0 12px #9333ea;
+}
+
+.leaderboard table {
+    width: 100%;
+    margin: auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.leaderboard th {
+    background: #35234f;
+    color: #c4b5fd;
+    padding: 12px 5px;
+    font-size: 14px;
+    border-bottom: 2px solid #9333ea;
+}
+
+.leaderboard td {
+    color: white;
+    text-align: center;
+    padding: 11px 5px;
+    font-size: 14px;
+    border-bottom: 1px solid #45365f;
+}
+
+.leaderboard th:nth-child(1),
+.leaderboard td:nth-child(1) {
+    width: 18%;
+}
+
+.leaderboard th:nth-child(2),
+.leaderboard td:nth-child(2) {
+    width: 52%;
+}
+
+.leaderboard th:nth-child(3),
+.leaderboard td:nth-child(3) {
+    width: 30%;
+}
+
+.leaderboard td:nth-child(3) {
+    color: #67e8f9;
+    font-weight: bold;
+}
+
+.leaderboard tbody tr:hover {
+    background: rgba(147, 51, 234, 0.2);
+}
+
+/* ===== RESPONSIVE MOBILE ===== */
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 25px;
+        margin-top: 15px;
+    }
+
+    .game-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .game-board {
+        width: 300px;
+        height: 600px;
+    }
+
+    .game-info {
+        width: 260px;
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 120px;
+    }
+}
+
+
+/* ===== PLAYER NAME DESIGN ===== */
+
+.player-section {
+    width: 300px;
+    margin: 25px auto;
+    padding: 20px;
+    background: linear-gradient(145deg, #292044, #171329);
+    border: 1px solid #a855f7;
+    border-radius: 18px;
+    box-shadow: 0 0 18px rgba(168, 85, 247, 0.3);
+    box-sizing: border-box;
+}
+
+.player-section h2 {
+    color: #d8b4fe;
+    font-size: 18px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px #9333ea;
+    margin-bottom: 18px;
+}
+
+#player-name {
+    width: 100%;
+    padding: 13px;
+    box-sizing: border-box;
+    border: 1px solid #a855f7;
+    border-radius: 10px;
+    outline: none;
+
+    background: rgba(10, 8, 25, 0.9);
+    color: #ffffff;
+
+    font-size: 16px;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    text-align: center;
+    letter-spacing: 1px;
+
+    box-shadow: 0 0 10px rgba(147, 51, 234, 0.2);
+    transition: 0.3s;
+}
+
+#player-name::placeholder {
+    color: #a78bca;
+}
+
+#player-name:focus {
+    border-color: #e9d5ff;
+    box-shadow:
+        0 0 10px #a855f7,
+        0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+/* ===== GAME FONT DESIGN ===== */
+
+body {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+h1 {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+h2, h3 {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    letter-spacing: 1px;
+}
+
+button {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+p {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+
+/* ===== หุ่นยนต์ตกแต่งเกม ===== */
+
+.robot {
+    position: fixed;
+    bottom: 100px;
+    width: 65px;
+    height: 75px;
+    z-index: 0;
+    animation: robotBounce 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.robot-left {
+    left: 35px;
+}
+
+.robot-right {
+    right: 35px;
+    animation-delay: 0.7s;
+}
+
+.robot-face {
+    width: 55px;
+    height: 48px;
+    margin: auto;
+    background: #c084fc;
+    border: 4px solid #f5d0fe;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #a855f7;
+    color: #31204b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    position: relative;
+}
+
+.robot-mouth {
+    font-size: 10px;
+    margin-top: 2px;
+}
+
+.robot-antenna {
+    width: 5px;
+    height: 12px;
+    background: #67e8f9;
+    margin: auto;
+    position: relative;
+}
+
+.robot-antenna::before {
+    content: "";
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    background: #67e8f9;
+    border-radius: 3px;
+    top: -8px;
+    left: -3px;
+}
+
+.robot-feet {
+    color: #67e8f9;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 8px;
+}
+
+@keyframes robotBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* ===== PIXEL ROBOT CHARACTER ===== */
+
+.robot {
+    position: fixed;
+    bottom: 90px;
+    width: 90px;
+    height: 125px;
+    z-index: 2;
+    pointer-events: none;
+    animation: robotFloat 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px #a855f7);
+}
+
+.robot-left {
+    left: 35px;
+}
+
+.robot-right {
+    right: 35px;
+    animation-delay: 1s;
+}
+
+/* เสาอากาศ */
+.antenna {
+    width: 6px;
+    height: 15px;
+    background: #67e8f9;
+    margin: auto;
+    position: relative;
+}
+
+.antenna span {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #f0abfc;
+    top: -10px;
+    left: -3px;
+    box-shadow: 0 0 8px #e879f9;
+}
+
+/* หัวหุ่นยนต์ */
+.robot-head {
+    width: 58px;
+    height: 43px;
+    background: #c084fc;
+    border: 4px solid #f5d0fe;
+    margin: auto;
+    position: relative;
+    box-shadow: inset -5px -5px #9333ea;
+    border-radius: 5px;
+}
+
+/* หู */
+.robot-ear {
+    position: absolute;
+    width: 7px;
+    height: 15px;
+    background: #67e8f9;
+    top: 10px;
+}
+
+.left-ear {
+    left: -11px;
+}
+
+.right-ear {
+    right: -11px;
+}
+
+/* ดวงตา */
+.robot-eyes {
+    display: flex;
+    justify-content: center;
+    gap: 13px;
+    margin-top: 9px;
+}
+
+.robot-eyes span {
+    width: 7px;
+    height: 9px;
+    background: #31204b;
+    border-radius: 2px;
+    animation: robotBlink 4s infinite;
+}
+
+/* ปาก */
+.robot-mouth {
+    width: 13px;
+    height: 4px;
+    background: #7e22ce;
+    margin: 6px auto;
+}
+
+/* ลำตัว */
+.robot-body {
+    width: 42px;
+    height: 30px;
+    background: #a855f7;
+    border: 4px solid #e9d5ff;
+    margin: 3px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset -5px -4px #7e22ce;
+}
+
+.robot-chest {
+    color: #67e8f9;
+    font-size: 17px;
+}
+
+/* แขน */
+.robot-arms {
+    position: relative;
+    width: 70px;
+    height: 0;
+    margin: -28px auto 0;
+}
+
+.robot-arms span {
+    position: absolute;
+    width: 10px;
+    height: 22px;
+    background: #c084fc;
+    border: 2px solid #f5d0fe;
+    top: 0;
+}
+
+.robot-arms span:first-child {
+    left: 0;
+}
+
+.robot-arms span:last-child {
+    right: 0;
+}
+
+/* ขา */
+.robot-legs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.robot-legs span {
+    width: 12px;
+    height: 17px;
+    background: #67e8f9;
+    border: 2px solid #cffafe;
+}
+
+/* เด้งขึ้นลง */
+@keyframes robotFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* กะพริบตา */
+@keyframes robotBlink {
+    0%, 45%, 50%, 100% {
+        transform: scaleY(1);
+    }
+    47%, 48% {
+        transform: scaleY(0.1);
+    }
+}
+
+/* ย่อขนาดแบบประเมิน */
+.evaluation-form {
+    width: 280px;
+    max-width: 85%;
+    padding: 10px;
+    margin: 8px auto;
+    box-sizing: border-box;
+}
+
+.evaluation-form h3 {
+    font-size: 9px;
+    margin: 4px 0;
+}
+
+.evaluation-form p {
+    font-size: 16px;
+    margin: 4px 0 8px;
+}
+
+.evaluation-form label {
+    font-size: 16px;
+    margin: 6px 0 3px;
+}
+
+.evaluation-form .rating {
+    padding: 4px;
+    gap: 5px;
+    font-size: 16px;
+}
+
+.evaluation-form .rating input {
+    width: 13px;
+    height: 13px;
+}
+
+.evaluation-form textarea {
+    min-height: 35px;
+    padding: 6px;
+    font-size: 16px;
+}
+
+.evaluation-form button {
+    margin-top: 8px;
+    padding: 7px;
+    font-size: 7px;
+}
+
+/* ปรับแบบประเมินให้เล็กและอยู่ด้านขวา */
+#game-over .evaluation-form {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 15px);
+    transform: translateY(-50%);
+
+    width: 230px;
+    max-width: 230px;
+    padding: 10px;
+    margin: 0;
+
+    box-sizing: border-box;
+    z-index: 20;
+}
+
+/* ลดขนาดตัวอักษร */
+#game-over .evaluation-form h3 {
+    font-size: 8px;
+    margin: 4px 0;
+}
+
+#game-over .evaluation-form p,
+#game-over .evaluation-form label {
+    font-size: 15px;
+    margin: 5px 0;
+}
+
+/* ลดช่องกรอก */
+#game-over .evaluation-form textarea {
+    min-height: 35px;
+    padding: 5px;
+    font-size: 15px;
+}
+
+/* ลดปุ่มส่ง */
+#game-over .evaluation-form button {
+    padding: 6px;
+    font-size: 7px;
+    margin-top: 6px;
+}
+/* ===== RESTORE GAME LAYOUT ===== */
+
+.game-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.game-board {
+    position: relative;
+    flex-shrink: 0;
+    width: 300px;
+    height: 600px;
+}
+
+.game-info {
+    position: relative;
+    flex-shrink: 0;
+    width: 130px;
+}
+
+/* ===== GAME OVER ===== */
+
+.game-board {
+    position: relative;
+}
+
+.game-over {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 10px;
+    gap: 3px;
+
+    background: rgba(16, 13, 32, 0.97);
+    border-radius: 6px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.game-over.show {
+    display: flex;
+}
+
+.game-over h2 {
+    color: #e879ff;
+    font-size: 27px;
+    margin: 3px 0;
+    text-shadow: 0 0 12px #9333ea;
+}
+
+.game-over .final-title {
+    color: white;
+    font-size: 14px;
+    margin: 0;
+}
+
+.game-over .final-score {
+    color: #67e8f9;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    text-shadow: 0 0 12px #06b6d4;
+}
+
+/* ปุ่มด้านบน */
+.game-over-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 7px;
+    margin-bottom: 8px;
+}
+
+.game-over-buttons button {
+    width: 90%;
+    padding: 9px;
+    border-radius: 10px;
+    border: 2px solid #c084fc;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #7e22ce, #a855f7);
+    cursor: pointer;
+    box-shadow: 0 0 10px #9333ea;
+}
+
+#back-to-menu {
+    background: linear-gradient(90deg, #1d4ed8, #2563eb);
+    border-color: #60a5fa;
+}
+
+/* ===== แบบประเมินในกรอบเดียวกัน ===== */
+
+.evaluation-form {
+    display: none;
+    width: 100%;
+    box-sizing: border-box;
+
+    /* ไม่มีกรอบย่อย */
+    border: none;
+    background: transparent;
+    box-shadow: none;
+
+    padding: 3px 5px;
+}
+
+.evaluation-form h3 {
+    color: #e879ff;
+    text-align: center;
+    font-size: 16px;
+    margin: 3px 0;
+    text-shadow: 0 0 8px #9333ea;
+}
+
+.evaluation-form p {
+    color: white;
+    text-align: center;
+    font-size: 13px;
+    margin: 3px 0;
+}
+
+/* ดาว 5 ระดับ */
+.rating {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 5px 0;
+}
+
+.rating label {
+    color: #facc15;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label:has(input:checked) {
+    color: #facc15;
+    text-shadow: 0 0 12px #facc15;
+}
+
+/* ช่องแสดงความคิดเห็น */
+.evaluation-form > label {
+    display: block;
+    color: #e9d5ff;
+    font-size: 12px;
+    margin: 7px 0 3px;
+}
+
+.evaluation-form textarea {
+    display: block;
+    width: 100%;
+    height: 38px;
+    box-sizing: border-box;
+    resize: vertical;
+
+    padding: 7px;
+    border: 1px solid #a855f7;
+    border-radius: 7px;
+
+    background: #211936;
+    color: white;
+    font-size: 12px;
+}
+
+.evaluation-form textarea::placeholder {
+    color: #aaa0bd;
+}
+
+/* ปุ่มส่ง */
+#submit-evaluation {
+    display: block;
+    width: 80%;
+    margin: 10px auto 3px;
+    padding: 8px;
+
+    border: 2px solid #d946ef;
+    border-radius: 9px;
+
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+
+    background: linear-gradient(90deg, #9333ea, #c026d3);
+    box-shadow: 0 0 10px #9333ea;
+    cursor: pointer;
+}
+
+/* แถบเลื่อน */
+.game-over::-webkit-scrollbar {
+    width: 4px;
+}
+
+.game-over::-webkit-scrollbar-thumb {
+    background: #a855f7;
+    border-radius: 10px;
+}
+/* บังคับให้ทุกส่วนเรียงต่อกันแนวตั้ง */
+.game-over {
+    display: none;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+}
+
+/* เมื่อเกมจบ */
+.game-over.show {
+    display: flex;
+}
+
+/* กลุ่มปุ่ม */
+.game-over-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    align-items: center !important;
+    flex-shrink: 0;
+}
+
+/* แบบประเมินให้อยู่ใต้ปุ่ม */
+#evaluation-form {
+    position: static !important;
+    display: none;
+    width: 100% !important;
+    align-self: stretch !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+}
+
+/* แสดงแบบประเมินหลังจบเกม */
+#evaluation-form[style*="display: block"] {
+    display: block !important;
+}
+
+/* ===== แก้ไขตำแหน่งกระดานเกมและกล่องคะแนน ===== */
+
+.game-container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 30px !important;
+    width: 100% !important;
+    margin: 25px auto 0 !important;
+}
+
+/* กระดานเกมอยู่ทางซ้าย */
+.game-board {
+    order: 1 !important;
+    position: relative !important;
+    flex: 0 0 300px !important;
+    width: 300px !important;
+    height: 600px !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box;
+}
+
+/* กล่องข้อมูลอยู่ทางขวา */
+.game-info {
+    order: 2 !important;
+    position: relative !important;
+    flex: 0 0 166px !important;
+    width: 166px !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box;
+}
+
+/* แก้หน้าจอ GAME OVER และแบบประเมิน */
+.game-over {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 15px 12px;
+    gap: 8px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 10;
+}
+
+.game-over.show {
+    display: flex;
+}
+
+/* หัวข้อ GAME OVER */
+.game-over h2 {
+    position: static;
+    margin: 5px 0 0;
+    flex-shrink: 0;
+}
+
+/* คะแนนสุดท้าย */
+.final-title,
+.final-score {
+    position: static;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* ปุ่มเล่นอีกครั้งและกลับหน้าหลัก */
+.game-over-buttons {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: 100%;
+    margin: 8px 0;
+    flex-shrink: 0;
+}
+
+.game-over-buttons button {
+    position: static;
+    width: 85%;
+    margin: 0;
+}
+
+/* แบบประเมิน */
+.evaluation-form {
+    position: static;
+    display: none;
+    width: 90%;
+    max-width: 320px;
+    box-sizing: border-box;
+
+    margin: 5px auto 15px;
+    padding: 10px;
+
+    flex-shrink: 0;
+}
+
+/* หัวข้อและข้อความในแบบประเมิน */
+.evaluation-form h3,
+.evaluation-form p,
+.evaluation-form label {
+    position: static;
+    margin: 5px 0;
+    text-align: center;
+}
+
+/* ช่องกรอกข้อความ */
+.evaluation-form textarea {
+    position: static;
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    box-sizing: border-box;
+    margin: 5px 0 10px;
+}
+
+/* ปุ่มส่งแบบประเมิน */
+#submit-evaluation {
+    position: static;
+    display: block;
+    width: 85%;
+    margin: 10px auto;
+}
+
+/* บังคับจัดหน้าจอ GAME OVER ใหม่ */
+#game-over {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+
+    display: none;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    overflow-y: auto !important;
+    padding: 15px !important;
+    gap: 8px !important;
+    z-index: 100 !important;
+}
+
+#game-over.show {
+    display: flex !important;
+}
+
+/* ยกเลิกตำแหน่งเก่าของทุกองค์ประกอบด้านใน */
+#game-over * {
+    position: static !important;
+    transform: none !important;
+    float: none !important;
+    box-sizing: border-box !important;
+}
+
+/* จัดหัวข้อและคะแนน */
+#game-over h2,
+#game-over p {
+    margin: 5px 0 !important;
+    text-align: center !important;
+    flex-shrink: 0;
+}
+
+/* ปุ่ม */
+#game-over .game-over-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin: 10px 0 !important;
+}
+
+#game-over .game-over-buttons button {
+    width: 85% !important;
+    margin: 0 !important;
+}
+
+/* แบบประเมิน */
+#game-over #evaluation-form {
+    width: 100% !important;
+    max-width: 320px !important;
+    flex-shrink: 0 !important;
+    margin: 10px auto !important;
+    padding: 10px !important;
+}
+
+#game-over #evaluation-form textarea {
+    display: block !important;
+    width: 100% !important;
+    min-height: 48px !important;
+    margin: 8px 0 !important;
+}
+
+#game-over #submit-evaluation {
+    width: 85% !important;
+    margin: 10px auto !important;
+}
+/* ดาวประเมิน: ยังไม่เลือกให้เป็นสีจาง */
+.rating {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    color: #777;
+    font-size: 32px;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+/* เมื่อเลือกดาว ให้เปลี่ยนเป็นสีเหลือง */
+.rating label.selected {
+    color: #ffd700;
+}
+
+/* เอฟเฟกต์ตอนกด */
+.rating label:active {
+    transform: scale(1.2);
+}
+
+/* หัวข้อเกมพร้อมหุ่นยนต์ */
+.game-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px auto;
+}
+
+.game-title h1 {
+    margin: 0;
+}
+
+/* รูปหุ่นยนต์ข้างชื่อเกม */
+.title-robot {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+    animation: robot-float 2s ease-in-out infinite;
+}
+
+/* ทำให้หุ่นยนต์ลอยขึ้นลง */
+@keyframes robot-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+/* พื้นหลังเกม Tetris */
+body {
+    background: #10082d url("./background.png") center center / cover no-repeat fixed !important;
+    min-height: 100vh;
+}
+
+/* ไม่ให้หน้าจอเกมบังพื้นหลัง */
+#start-screen,
+#game-screen {
+    background-color: transparent !important;
+}
+
+/* ฟอนต์หลักของเกม */
+body,
+button,
+input,
+textarea,
+select,
+p,
+label,
+th,
+td {
+    font-family: 'Chakra Petch', sans-serif !important;
+}
+
+/* หัวข้อภาษาอังกฤษ */
+h1,
+h2,
+h3 {
+    font-family: 'Press Start 2P', 'Chakra Petch', sans-serif !important;
+}
+
+/* ชื่อเกม */
+.game-title h1 {
+    font-family: 'Press Start 2P', sans-serif !important;
+}
+
+/* ตัวเลขคะแนน */
+#score,
+#high-score,
+#level,
+#final-score {
+    font-family: 'Press Start 2P', sans-serif !important;
+}
+
+/* โลโก้บนหน้าเล่นเกม */
+.game-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto 20px;
+    gap: 5px;
+}
+
+.game-logo {
+    width: 180px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px #a855f7);
+    animation: robot-float 2s ease-in-out infinite;
+}
+
+.game-header p {
+    margin: 0;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+}
