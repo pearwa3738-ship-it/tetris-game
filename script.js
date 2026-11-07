@@ -448,6 +448,42 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
+// ปุ่มควบคุมสำหรับโทรศัพท์
+function setupMobileControls() {
+
+    const leftBtn = document.getElementById("mobile-left");
+    const rightBtn = document.getElementById("mobile-right");
+    const downBtn = document.getElementById("mobile-down");
+    const rotateBtn = document.getElementById("mobile-rotate");
+
+    function mobileAction(button, action) {
+        button.addEventListener("pointerdown", function(event) {
+            event.preventDefault();
+
+            if (!isRunning || isPaused) return;
+
+            action();
+        });
+    }
+
+    mobileAction(leftBtn, moveLeft);
+    mobileAction(rightBtn, moveRight);
+
+    mobileAction(downBtn, function() {
+        moveDown();
+        playSound(220, 0.05);
+    });
+
+    mobileAction(rotateBtn, function() {
+        rotateBlock();
+        playSound(600, 0.1);
+    });
+}
+
+setupMobileControls();
+
+
+
 // 20. หยุดเกม
 function stopGame() {
     clearInterval(timer);

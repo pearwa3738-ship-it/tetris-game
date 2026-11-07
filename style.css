@@ -1681,3 +1681,86 @@ h3 {
     color: white;
     font-weight: bold;
 }
+
+/* ปุ่มควบคุมสำหรับโทรศัพท์ */
+.mobile-controls {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .mobile-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        margin: 15px auto;
+        width: 100%;
+    }
+
+    .mobile-controls button {
+        width: 58px;
+        height: 58px;
+        border: 2px solid #b99aff;
+        border-radius: 15px;
+        background: #392858;
+        color: white;
+        font-size: 26px;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        touch-action: none;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .mobile-controls button:active {
+        background: #9066d8;
+        transform: scale(0.93);
+    }
+}
+
+
+/* ===== ปรับหน้าจอสำหรับโทรศัพท์ ===== */
+@media screen and (max-width: 768px) {
+
+    .game-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 15px;
+        margin-top: 15px;
+        padding: 0 10px;
+    }
+
+}
+
+/* ===== ปรับขนาดเกมบนโทรศัพท์ ===== */
+@media screen and (max-width: 768px) {
+
+    #game {
+        width: min(75vw, 300px);
+        height: auto;
+    }
+
+    .game-info {
+        width: min(85vw, 260px);
+        box-sizing: border-box;
+        padding: 12px;
+        text-align: center;
+    }
+
+    .game-info p {
+        font-size: 20px;
+    }
+
+    .next-block,
+    .hold-block {
+        margin-top: 10px;
+    }
+
+    .mobile-controls {
+        position: relative;
+        z-index: 30;
+    }
+
+}
