@@ -200,13 +200,31 @@ function drawNextBlock() {
     // ขนาดของแต่ละช่อง
     const blockSize = 25;
 
-    // หาความกว้างและความสูงของบล็อก
-    const width = nextBlock.shape[0].length * blockSize;
-    const height = nextBlock.shape.length * blockSize;
+    // หาตำแหน่งช่องที่มีบล็อกจริง
+let minX = Infinity;
+let maxX = -Infinity;
+let minY = Infinity;
+let maxY = -Infinity;
 
-    // จัดบล็อกให้อยู่ตรงกลาง
-    const offsetX = (nextCanvas.width - width) / 2;
-    const offsetY = (nextCanvas.height - height) / 2;
+for (let y = 0; y < nextBlock.shape.length; y++) {
+    for (let x = 0; x < nextBlock.shape[y].length; x++) {
+        if (nextBlock.shape[y][x] === 1) {
+            minX = Math.min(minX, x);
+            maxX = Math.max(maxX, x);
+            minY = Math.min(minY, y);
+            maxY = Math.max(maxY, y);
+        }
+    }
+}
+
+// จัดบล็อกให้อยู่ตรงกลาง Canvas
+const offsetX =
+    (nextCanvas.width - (maxX - minX + 1) * blockSize) / 2
+    - minX * blockSize;
+
+const offsetY =
+    (nextCanvas.height - (maxY - minY + 1) * blockSize) / 2
+    - minY * blockSize;
 
     // วาดบล็อกทีละช่อง
     for (let y = 0; y < nextBlock.shape.length; y++) {
