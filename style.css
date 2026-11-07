@@ -1764,3 +1764,48 @@ h3 {
     }
 
 }
+
+
+
+/* ===== จัดหน้าจอมือถือให้พอดี ===== */
+@media screen and (max-width: 768px) {
+
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .game-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 15px !important;
+        padding: 0 8px;
+        box-sizing: border-box;
+    }
+
+    .game-board {
+        width: min(78vw, 300px) !important;
+        height: auto !important;
+        box-sizing: border-box;
+        flex-shrink: 0;
+    }
+
+    .game-board canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .game-info {
+        width: min(85vw, 300px) !important;
+        box-sizing: border-box;
+        margin: 0 auto;
+    }
+
+    .mobile-controls {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: nowrap;
+    }
+}
